@@ -1,23 +1,28 @@
 var mongoose = require('mongoose')
 
-const userNotificationSchema = new mongoose.Schema({
-    notificationId :{type:String, default:"notification"},
-    notificationType : {type: Number, default : 0 },
-    isNotificationResolved :{type:Boolean, default: false}
-})
+
 const userProfileSchema = new mongoose.Schema({
     myQuestions : {
-        type:[String],
+        type:[{
+            type:mongoose.Schema.ObjectId,
+            ref:'Question'
+        }],
         required:true,
         default:[]
     },
     myComments:{
-        type:[String],
+        type:[{
+            type:mongoose.Schema.ObjectId,
+            ref:'Comment'
+        }],
         required:true,
         default:[]
     },
     myNotification:{
-        type: [userNotificationSchema],
+        type: [{
+            type:mongoose.Schema.ObjectId,
+            ref:'Notification'
+        }],
         required:true,
         default:[]
     }
