@@ -23,10 +23,6 @@ const classSchema = new mongoose.Schema({
         }],
         default:[]
     },
-    creator:{
-        type:mongoose.Schema.ObjectId,
-        ref:'User'
-    },
     instructors:{
         type: [{
             type:mongoose.Schema.ObjectId,

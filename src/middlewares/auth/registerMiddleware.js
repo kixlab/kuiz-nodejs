@@ -1,4 +1,4 @@
-const Course = require('../../db/models/course');
+const Course = require('../../db/models/class');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
