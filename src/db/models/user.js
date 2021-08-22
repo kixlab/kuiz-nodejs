@@ -25,6 +25,14 @@ const userProfileSchema = new mongoose.Schema({
         }],
         required:true,
         default:[]
+    },
+    classId:{
+        type:mongoose.Schema.ObjectId,
+        ref:'Class'
+    },
+    isStudent:{
+        type:Boolean,
+        default:true
     }
 })
 const userSchema = new mongoose.Schema({
