@@ -6,6 +6,9 @@ const client = new OAuth2Client(process.env.CLIENT_ID)
 const jwt = require('jsonwebtoken');
 
 const createClassMiddleware = (req,res) =>{
+    
+    const classname = req.body.className;
+    const instructor = req.body.email;
 
     const makeid = (length) => {
         var result = '';
@@ -18,8 +21,7 @@ const createClassMiddleware = (req,res) =>{
     }
     let today = new Date();
     const classid = today.getFullYear().toString() + today.getMonth().toString() + today.getTime().toString() + makeid(40);
-    const classname = req.body.className;
-    const instructor = req.body.userId;
+    
     
     Class.findOne({ className: classname }, (err, data) => {
         if (err) throw err;
