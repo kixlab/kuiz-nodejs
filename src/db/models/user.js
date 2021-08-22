@@ -1,6 +1,27 @@
 var mongoose = require('mongoose')
 
-
+userNotificationSchema = new mongoose.Schema({
+    notificationId :{type:String, default:"notification"},
+    notificationType : {type: Number, default : 0 },
+    isNotificationResolved :{type:Boolean, default: false}
+})
+const userProfileSchema = new mongoose.Schema({
+    myQuestions : {
+        type:[String],
+        required:true,
+        default:[]
+    },
+    myComments:{
+        type:[String],
+        required:true,
+        default:[]
+    },
+    myNotification:{
+        type: [userNotificationSchema],
+        required:true,
+        default:[]
+    }
+})
 const userSchema = new mongoose.Schema({
     name:{
         type:String,
@@ -15,13 +36,8 @@ const userSchema = new mongoose.Schema({
         unique:true,
         lowercase:true
     },
-    pwd: { 
-        type:String,
-        trim:true,
-        lowercase:true
-    },
-    courses:{
-        type:[String],
+    classes:{
+        type: [userProfileSchema],
         default:[]
     }
 })
