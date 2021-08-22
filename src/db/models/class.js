@@ -8,7 +8,10 @@ const classSchema = new mongoose.Schema({
         required:true,
         max:32
     },
-    classCode: { 
+    classId:{
+        type:String
+    },
+    joinCode: { 
         type:Number,
         trim:true,
         lowercase:true
@@ -19,6 +22,10 @@ const classSchema = new mongoose.Schema({
             ref:'User'
         }],
         default:[]
+    },
+    creator:{
+        type:mongoose.Schema.ObjectId,
+        ref:'User'
     },
     instructors:{
         type: [{
