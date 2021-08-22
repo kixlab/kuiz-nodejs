@@ -1,6 +1,6 @@
 var mongoose = require('mongoose')
 
-userNotificationSchema = new mongoose.Schema({
+const userNotificationSchema = new mongoose.Schema({
     notificationId :{type:String, default:"notification"},
     notificationType : {type: Number, default : 0 },
     isNotificationResolved :{type:Boolean, default: false}
