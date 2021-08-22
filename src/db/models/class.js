@@ -1,19 +1,18 @@
 var mongoose = require('mongoose')
 
 
-const questionSchema = new mongoose.Schema(
+const classQuestionSchema = new mongoose.Schema(
     {
-        qstem:{
-            type:String,
-            required:true
-        },
-        author:{
-            type:String,
-            required:true
+        questionId:{
+            type:mongoose.Schema.ObjectId,
+            ref:'Question'
         }
-    },
-    {timestamps : true}
+    }
 )
+const classUserSchema = new mongoose.Schema({
+    _id: mongoose.Schema.ObjectId,
+    ref:'User'
+})
 const classSchema = new mongoose.Schema({
     className:{
         type:String,
@@ -21,28 +20,21 @@ const classSchema = new mongoose.Schema({
         required:true,
         max:32
     },
-    classId:{
-        type:String,
-        trim:true,
-        required:true,
-        unique:true,
-        lowercase:true
-    },
-    code: { 
-        type:String,
+    classCode: { 
+        type:Number,
         trim:true,
         lowercase:true
     },
     students:{
-        type:[String],
+        type: [classUserSchema],
         default:[]
     },
     instructors:{
-        type:[String],
+        type: [classUserSchema],
         default:[]
     },
     questions:{
-        type:[questionSchema],
+        type:[classQuestionSchema],
         default:[]
     }
 })
