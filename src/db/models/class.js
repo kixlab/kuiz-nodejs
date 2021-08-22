@@ -1,18 +1,6 @@
 var mongoose = require('mongoose')
 
 
-const classQuestionSchema = new mongoose.Schema(
-    {
-        questionId:{
-            type:mongoose.Schema.ObjectId,
-            ref:'Question'
-        }
-    }
-)
-const classUserSchema = new mongoose.Schema({
-    _id: mongoose.Schema.ObjectId,
-    ref:'User'
-})
 const classSchema = new mongoose.Schema({
     className:{
         type:String,
@@ -26,15 +14,24 @@ const classSchema = new mongoose.Schema({
         lowercase:true
     },
     students:{
-        type: [classUserSchema],
+        type: [{
+            type:mongoose.Schema.ObjectId,
+            ref:'User'
+        }],
         default:[]
     },
     instructors:{
-        type: [classUserSchema],
+        type: [{
+            type:mongoose.Schema.ObjectId,
+            ref:'User'
+        }],
         default:[]
     },
     questions:{
-        type:[classQuestionSchema],
+        type:[{
+            type:mongoose.Schema.ObjectId,
+            ref:'Question'
+        }],
         default:[]
     }
 })
