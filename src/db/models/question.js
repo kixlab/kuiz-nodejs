@@ -20,6 +20,7 @@ const AnswerOptionSchema = new mongoose.Schema({
         required:true
     }
 }, { _id: false })
+
 const questionSchema = new mongoose.Schema({
     author:{
         type:mongoose.Schema.ObjectId,
@@ -63,7 +64,7 @@ const questionSchema = new mongoose.Schema({
     },
     feedbcaks :{
         type:[{
-            type:mongoose.Schema.ObjectId,
+            type: mongoose.Schema.ObjectId,
             ref:'Feedback'
         }],
         default:[]
