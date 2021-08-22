@@ -1,5 +1,25 @@
 var mongoose = require('mongoose');
 
+const AnswerOptionSchema = new mongoose.Schema({
+    optionNumber:{
+        type:Number,
+        required:true
+    },
+    answerBody:{
+        type:String,
+        minlength:1,
+        maxlength:200
+    },
+    isCorrectAnswer:{
+        type:Boolean,
+        default:false
+    },
+    numOfSelection:{
+        type:Number,
+        default:0,
+        required:true
+    }
+}, { _id: false })
 const questionSchema = new mongoose.Schema({
     author:{
         type:mongoose.Schema.ObjectId,
@@ -41,13 +61,15 @@ const questionSchema = new mongoose.Schema({
         data:Buffer,
         contentType:String
     },
-    comments :{
+    feedbcaks :{
         type:[{
             type:mongoose.Schema.ObjectId,
-            ref:'Comment'
+            ref:'Feedback'
         }],
         default:[]
     }
 },{
     timestamps: true
 })
+
+module.exports = mongoose.model('Question', questionSchema);

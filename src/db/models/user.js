@@ -10,10 +10,10 @@ const userProfileSchema = new mongoose.Schema({
         required:true,
         default:[]
     },
-    myComments:{
+    myFeedbacks:{
         type:[{
             type:mongoose.Schema.ObjectId,
-            ref:'Comment'
+            ref:'Feedback'
         }],
         required:true,
         default:[]
