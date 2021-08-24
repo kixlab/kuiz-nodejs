@@ -2,8 +2,6 @@ const Class = require('../../db/models/class');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
 const {OAuth2Client} = require('google-auth-library');
-const client = new OAuth2Client(process.env.CLIENT_ID)
-const jwt = require('jsonwebtoken');
 
 const createClassMiddleware = (req,res) =>{
     
