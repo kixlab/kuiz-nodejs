@@ -22,6 +22,9 @@ const AnswerOptionSchema = new mongoose.Schema({
 }, { _id: false })
 
 const questionSchema = new mongoose.Schema({
+    qNumber:{
+        type:Number,
+    },
     author:{
         type:mongoose.Schema.ObjectId,
         ref:'User'
