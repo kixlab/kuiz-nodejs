@@ -3,9 +3,7 @@ const crypto = require('crypto');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 
-const createClass = (req, res) =>{
-    
-}
+
 const registerMiddleware = (req, res) => {
 
     const tokenId = req.body.tokenId;
@@ -22,7 +20,7 @@ const registerMiddleware = (req, res) => {
                 } else{
                     if(user){
                         console.log("this user exists")
-                        const token = jwt.sign({_id:user._id}, process.env.PRIVATE_KEY, {expiresIn: '7d'})
+                        const token = jwt.sign({_id:user._id}, process.env.JWT_SECRET, {expiresIn: '7d'})
                         const {_id, name, email, courses} = user;
                         res.json({
                             token, 
@@ -38,7 +36,7 @@ const registerMiddleware = (req, res) => {
                                     error:"something wrong"
                                 })
                             }
-                            const token = jwt.sign({_id:data._id}, process.env.PRIVATE_KEY,{expiresIn: '7d'})
+                            const token = jwt.sign({_id:data._id}, process.env.JWT_SECRET,{expiresIn: '7d'})
                             const {_id, name, email, courses} = newUser;
                             res.json({
                                 token, 
