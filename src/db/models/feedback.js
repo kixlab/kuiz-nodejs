@@ -18,13 +18,13 @@ const evaluationSchema = new mongoose.Schema({
     }
 })
 const feedbackSchema = new mongoose.Schema({
-    questionId:{
-        type:mongoose.Schema.ObjectId,
-        ref:"Question"
+    qNUm:{
+        type:Number,
+        required:true
     },
     author: {
-        type: mongoose.Schema.ObjectId,
-        ref: "User"
+        type: String,
+        required:true
     },
     evaluation: {
         type: evaluationSchema

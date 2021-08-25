@@ -11,7 +11,7 @@ var loadClass = require('../middlewares/class/loadClassMiddleware')
 //question related middleware
 var createQuestion = require("../middlewares/class/question/createQuestionMiddleware")
 var deleteQuestion = require("../middlewares/class/question/deleteQuestionMiddleware")
-var modifyQuestion = require("../middlewares/class/question/modifyQuestionMiddleware")
+//var modifyQuestion = require("../middlewares/class/question/modifyQuestionMiddleware")
 var loadQuestion = require("../middlewares/class/question/loadQuestionMiddleware")
 //feedback related middleware
 var createFeedback = require("../middlewares/class/feedback/createFeedbackMiddleware")

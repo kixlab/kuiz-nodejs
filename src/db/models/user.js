@@ -3,26 +3,17 @@ var mongoose = require('mongoose')
 
 const userProfileSchema = new mongoose.Schema({
     myQuestions : {
-        type:[{
-            type:mongoose.Schema.ObjectId,
-            ref:'Question'
-        }],
+        type:String,
         required:true,
         default:[]
     },
-    myFeedbacks:{
-        type:[{
-            type:mongoose.Schema.ObjectId,
-            ref:'Feedback'
-        }],
+    myFeedback:{
+        type:String,
         required:true,
         default:[]
     },
     myNotification:{
-        type: [{
-            type:mongoose.Schema.ObjectId,
-            ref:'Notification'
-        }],
+        type: String,
         required:true,
         default:[]
     },

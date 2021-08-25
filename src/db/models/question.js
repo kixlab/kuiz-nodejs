@@ -65,11 +65,8 @@ const questionSchema = new mongoose.Schema({
         data:Buffer,
         contentType:String
     },
-    feedbcaks :{
-        type:[{
-            type: mongoose.Schema.ObjectId,
-            ref:'Feedback'
-        }],
+    feedback :{
+        type:String,
         default:[]
     }
 },{
