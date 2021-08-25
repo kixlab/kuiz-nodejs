@@ -1,5 +1,5 @@
-const Class = require('../../db/models/class');
-const Question = require('../../db/models/question');
+const Class = require('../../../db/models/class');
+const Question = require('../../../db/models/question');
 
 const loadQuestionMiddleware = (req, res, next) =>{
     const classid = req.query.classid
@@ -16,7 +16,7 @@ const loadQuestionMiddleware = (req, res, next) =>{
     }
     const getQuestionData = (questionIdList) =>{
         return new Promise((res,rej)=>{
-            Questions.findById({ _id: { $in: questionIdList } },(err,data)=>{
+            Question.findById({ _id: { $in: questionIdList } },(err,data)=>{
                 if(err) throw err;
                 else{
                     resolve(data)

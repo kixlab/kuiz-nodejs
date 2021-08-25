@@ -1,4 +1,4 @@
-const Question = require('../../db/models/question');
+const Question = require('../../../db/models/question');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
 const { OAuth2Client } = require('google-auth-library');

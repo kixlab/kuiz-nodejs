@@ -1,5 +1,4 @@
-const Class = require('../../db/models/class');
-const Feedback = require('../../db/models/feedback');
+const Feedback = require('../../../db/models/feedback');
 
 const loadFeedbackMiddleware = (req, res, next) => {
     const qnum = req.query.qNum
