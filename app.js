@@ -5,6 +5,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
+var swaggerJsdoc = require("swagger-jsdoc");
+var swaggerUi = require("swagger-ui-express");
 
 const db = require('./src/db/db');
 db();
@@ -20,15 +22,48 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "LogRocket Express API with Swagger",
+      version: "0.1.0",
+      description:
+        "This is a SGMCQ Epxress app documented with Swagger",
+      license: {
+        name: "MIT",
+        url: "https://spdx.org/licenses/MIT.html",
+      },
+      contact: {
+        name: "LogRocket",
+        url: "https://logrocket.com",
+        email: "info@email.com",
+      },
+    },
+    servers: [
+      {
+        url: "http://localhost:3000/books",
+      },
+    ],
+  },
+  apis: ["./routes/books.js"],
+};
 
+const specs = swaggerJsdoc(options);
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(specs)
+);
 // var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 var authRouter = require('./src/routes/auth');
-//var classRouter = require('/src/routes/class')
+var classRouter = require('/src/routes/class')
+
 
 //app.use('/', indexRouter);
 app.use('/auth',authRouter);//localhost:8080/auth/register
-//app.use('/class', classRouter)
+app.use('/class', classRouter)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

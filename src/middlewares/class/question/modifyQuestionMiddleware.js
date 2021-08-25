@@ -11,7 +11,7 @@ const modifyQuestionMiddleware = (req, res) => {
     Question.updateOne({ author: author }, { $pull: { qstem: qstem, tags:tags, answeroptions:answeroptions, explanation:explanation, image:image } })
         .then((data) => {
             console.log(data);
-            axios.post("http://localhost:8080/question/modifyQuestionMiddleware", 
+            axios.post("http://localhost:8080/question/modifyQuestion", 
             // { content: noticeContent, title: noticeTitle }, { params: { userId: userid, classId: classid }}
             )
                 .then((response) => {

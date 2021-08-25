@@ -31,10 +31,7 @@ const classSchema = new mongoose.Schema({
         default:[]
     },
     questions:{
-        type:[{
-            type:mongoose.Schema.ObjectId,
-            ref:'Question'
-        }],
+        type:[String],
         default:[]
     }
 })
