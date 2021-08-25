@@ -9,6 +9,7 @@ const createQuestionMiddleware = (req, res) => {
     const [author, qstem, tags, answeroptions, explanation, image] = [req.body.userEmail, req.body.qstem, req.body.tags, req.body.answeroptions, req.body.explanation, req.body.image]
 
     const question = new Question({
+        qNumber: Question.countDocuments()+1,
         author : author,
         qstem : qstem,
         tags : tags,
