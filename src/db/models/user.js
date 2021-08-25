@@ -27,8 +27,7 @@ const userProfileSchema = new mongoose.Schema({
         default:[]
     },
     classId:{
-        type:mongoose.Schema.ObjectId,
-        ref:'Class'
+        type:String,
     },
     isStudent:{
         type:Boolean,
@@ -39,7 +38,6 @@ const userSchema = new mongoose.Schema({
     name:{
         type:String,
         trim:true,
-        required:true,
         max:32
     },
     email:{

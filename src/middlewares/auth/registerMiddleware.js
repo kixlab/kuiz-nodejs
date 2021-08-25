@@ -1,4 +1,4 @@
-const Course = require('../../db/models/class');
+const User = require('../../db/models/user')
 const crypto = require('crypto');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
@@ -20,11 +20,11 @@ const registerMiddleware = (req, res) => {
                 } else{
                     if(user){
                         console.log("this user exists")
-                        const token = jwt.sign({_id:user._id}, process.env.JWT_SECRET, {expiresIn: '7d'})
-                        const {_id, name, email, courses} = user;
+                        const token = jwt.sign({_id:user._id, email: user.email}, process.env.JWT_SECRET, {expiresIn: '7d'})
+                        const {_id, name, email, classes} = user;
                         res.json({
                             token, 
-                            user:{_id, name, email, courses},
+                            user:{_id, name, email, classes},
                         })
                     } else{
                         let newUser = new User({name, email});
@@ -36,11 +36,11 @@ const registerMiddleware = (req, res) => {
                                     error:"something wrong"
                                 })
                             }
-                            const token = jwt.sign({_id:data._id}, process.env.JWT_SECRET,{expiresIn: '7d'})
-                            const {_id, name, email, courses} = newUser;
+                            const token = jwt.sign({_id:data._id, email : data.email}, process.env.JWT_SECRET,{expiresIn: '7d'})
+                            const {_id, name, email, classes} = newUser;
                             res.json({
                                 token, 
-                                user:{_id, name, email, courses},
+                                user:{_id, name, email, classes},
                             })
                         })
                     }
