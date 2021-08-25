@@ -28,6 +28,8 @@ const loadQuestionMiddleware = (req, res, next) =>{
 
     getClass(classid)
     .then(questions => getQuestionData(questions))
-    .then(questiondatas => res.json({questionDats : questiondatas, success:true, msg:"success"}))
+    .then(questiondatas => res.json({questionDatas : questiondatas, success:true, msg:"success"}))
     .catch(err => console.log("err",err))
 }
+
+module.exports = loadQuestionMiddleware
