@@ -46,3 +46,5 @@ const createFeedbackMiddleware = (req,res,next)=>{
             })
         })
 }
+
+module.exports = createFeedbackMiddleware;
