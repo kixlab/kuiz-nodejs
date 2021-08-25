@@ -58,7 +58,7 @@ app.use(
 // var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 var authRouter = require('./src/routes/auth');
-var classRouter = require('/src/routes/class')
+var classRouter = require('./src/routes/class')
 
 
 //app.use('/', indexRouter);
