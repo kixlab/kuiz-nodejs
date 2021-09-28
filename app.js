@@ -26,23 +26,14 @@ const options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "LogRocket Express API with Swagger",
+      title: "SGMCQ Express API Documentation",
       version: "0.1.0",
       description:
         "This is a SGMCQ Epxress app documented with Swagger",
-      license: {
-        name: "MIT",
-        url: "https://spdx.org/licenses/MIT.html",
-      },
-      contact: {
-        name: "LogRocket",
-        url: "https://logrocket.com",
-        email: "info@email.com",
-      },
     },
     servers: [
       {
-        url: "http://localhost:3000/books",
+        url: "http://localhost:8080",
       },
     ],
   },
@@ -53,7 +44,7 @@ const specs = swaggerJsdoc(options);
 app.use(
   "/api-docs",
   swaggerUi.serve,
-  swaggerUi.setup(specs)
+  swaggerUi.setup(specs, { explorer: true })
 );
 // var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
