@@ -8,11 +8,11 @@ const classSchema = new mongoose.Schema({
         required:true,
         max:32
     },
-    classId:{
-        type:String
-    },
+    // classId:{
+    //     type:String
+    // },
     joinCode: { 
-        type:Number,
+        type:String,
         trim:true,
         lowercase:true
     },

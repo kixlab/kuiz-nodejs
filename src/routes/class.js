@@ -27,7 +27,7 @@ var loadFeedback = require("../middlewares/class/feedback/loadFeedbackMiddleware
 
 /////도현씨 요기부터 읽으시면 돼요!////
 router.post('/create', checkIsUser, createClass)/
-router.post('/join', checkIsUser, joinClass)
+router.post('/join', joinClass)
 router.get('/load', checkIsUser, loadClass)
 
 router.get('/question/load', checkIsUser, checkInClass, loadQuestion)

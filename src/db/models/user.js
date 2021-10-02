@@ -17,8 +17,11 @@ const userProfileSchema = new mongoose.Schema({
         required:true,
         default:[]
     },
-    classId:{
-        type:String,
+    // classId:{
+    //     type:String,
+    // },
+    joinCode: {
+        type: String,
     },
     isStudent:{
         type:Boolean,
@@ -39,7 +42,7 @@ const userSchema = new mongoose.Schema({
         lowercase:true
     },
     classes:{
-        type: [userProfileSchema],
+        type: [String],
         default:[]
     }
 })
