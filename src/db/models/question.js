@@ -14,26 +14,28 @@ const AnswerOptionSchema = new mongoose.Schema({
         type:Boolean,
         default:false
     },
-    numOfSelection:{
-        type:Number,
-        default:0,
-        required:true
-    }
+    // numOfSelection:{
+    //     type:Number,
+    //     default:0,
+    //     required:true
+    // }
 }, { _id: false })
 
-const questionSchema = new mongoose.Schema({
-    qNumber:{
-        type:Number,
-    },
+export const questionSchema = new mongoose.Schema({
+    // qNumber:{
+    //     type:Number,
+    // },
     author:{
         type:mongoose.Schema.ObjectId,
         ref:'User'
     },
     qStem:{
         type:String, 
-        minlength:10,
-        maxlength:1000
+        // minlength:10,
+        // maxlength:1000
     },
+    /*
+    *****left as code comment for further implementation(ask @inhwa)*****
     contributors:{
         type:[{
             type:mongoose.Schema.ObjectId,
@@ -42,6 +44,7 @@ const questionSchema = new mongoose.Schema({
         default:[],
         required:true
     },
+    */
     tags:{
         type:[String],
         default:[]
@@ -65,7 +68,7 @@ const questionSchema = new mongoose.Schema({
         data:Buffer,
         contentType:String
     },
-    feedback :{
+    comment :{
         type:String,
         default:[]
     }
@@ -73,4 +76,4 @@ const questionSchema = new mongoose.Schema({
     timestamps: true
 })
 
-module.exports = mongoose.model('Question', questionSchema);
+// module.exports = mongoose.model('Question', questionSchema);

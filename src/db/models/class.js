@@ -1,4 +1,5 @@
 var mongoose = require('mongoose')
+import {questionSchema} from './question'
 
 
 const classSchema = new mongoose.Schema({
@@ -31,9 +32,18 @@ const classSchema = new mongoose.Schema({
         default:[]
     },
     questions:{
-        type:[String],
+        type: [questionSchema],
         default:[]
+    },
+    target:{
+        type:[Number],
+        default:[3,3,3],
+        validate:[arrayLimit,"{PATH} exceeds the limit of 3"]
     }
 })
+
+function arrayLimit(val) {
+    return val.length === 3;
+}
 
 module.exports = mongoose.model('Class', classSchema);
