@@ -2,11 +2,12 @@ const Class = require('../../../db/models/class');
 const Question = require('../../../db/models/question');
 
 const loadQuestionMiddleware = (req, res, next) =>{
-    const classid = req.query.classid
+    console.log("loadQuestionsMiddleware")
+    const joinCode = req.body.code
 
-    const getClass = (classid) =>{
+    const getClass = (joinCode) =>{
         return new Promise((res,rej)=>{
-            Class.findOne({classId:classid},(err,data)=>{
+            Class.findOne({ joinCode: joinCode},(err,data)=>{
                 if(err) throw err;
                 else{
                     resolve(data.questions)
@@ -26,8 +27,8 @@ const loadQuestionMiddleware = (req, res, next) =>{
     }
 
 
-    getClass(classid)
-    .then(questions => getQuestionData(questions))
+    getClass(joinCode)
+    // .then(questions => getQuestionData(questions))
     .then(questiondatas => res.json({questionDatas : questiondatas, success:true, msg:"success"}))
     .catch(err => console.log("err",err))
 }

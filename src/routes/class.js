@@ -30,7 +30,7 @@ router.post('/create', checkIsUser, createClass)/
 router.post('/join', joinClass)
 router.get('/load', checkIsUser, loadClass)
 
-router.get('/question/load', checkIsUser, checkInClass, loadQuestion)
+router.get('/question/load', loadQuestion)// , checkIsUser, checkInClas <- 이거 추가 해야함
 router.post('/question/create',checkIsUser, checkInClass, createQuestion);
 //router.post('/question/delete',checkIsUser, checkInClass, deleteQuestion);
 //router.post('/question/modify',checkIsUser, checkInClass, modifyQuestion);

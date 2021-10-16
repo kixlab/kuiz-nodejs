@@ -21,7 +21,7 @@ const AnswerOptionSchema = new mongoose.Schema({
     // }
 }, { _id: false })
 
-export const questionSchema = new mongoose.Schema({
+const questionSchema = new mongoose.Schema({
     // qNumber:{
     //     type:Number,
     // },
@@ -76,4 +76,4 @@ export const questionSchema = new mongoose.Schema({
     timestamps: true
 })
 
-// module.exports = mongoose.model('Question', questionSchema);
+module.exports = mongoose.model('Question', questionSchema);

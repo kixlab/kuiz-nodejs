@@ -5,10 +5,7 @@ const jwt = require('jsonwebtoken');
 
 
 const registerMiddleware = (req, res) => {
-    console.log("aaaaa")
     console.log("Req",req)
-    //const tokenId = req.body.tokenId;
-    // console.log("clientId",process.env.CLIENT_ID)
     const name = req.body.name
     const email = req.body.email
     User.findOne({ email }).exec((err, user) => {
