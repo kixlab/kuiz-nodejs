@@ -1,36 +1,23 @@
 const Class = require('../../../db/models/class');
-const Question = require('../../../db/models/question');
-
-const loadQuestionMiddleware = (req, res, next) =>{
-    console.log("loadQuestionsMiddleware")
-    const joinCode = req.body.code
-
-    const getClass = (joinCode) =>{
-        return new Promise((res,rej)=>{
-            Class.findOne({ joinCode: joinCode},(err,data)=>{
-                if(err) throw err;
-                else{
-                    resolve(data.questions)
-                }
+// const Question = require('../../../db/models/question');
+const loadQuestionMiddleware = (req, res) => {
+    const joinCode = req.query.code
+    Class.findOne({ joinCode: joinCode }, (err, data) => {
+        if (err) {
+            console.log("err",err)
+            return res.status(400).json({
+                error: "err"
             })
-        })
-    }
-    const getQuestionData = (questionIdList) =>{
-        return new Promise((res,rej)=>{
-            Question.findById({ _id: { $in: questionIdList } },(err,data)=>{
-                if(err) throw err;
-                else{
-                    resolve(data)
-                }
+        }
+        else {
+            console.log("data", data)
+            res.json({
+                //token,
+                questions: { questionDatas: data.questions, success: true, msg: "success" },
             })
-        })
-    }
-
-
-    getClass(joinCode)
-    // .then(questions => getQuestionData(questions))
-    .then(questiondatas => res.json({questionDatas : questiondatas, success:true, msg:"success"}))
-    .catch(err => console.log("err",err))
+        }
+    })
 }
+
 
 module.exports = loadQuestionMiddleware
