@@ -12,7 +12,7 @@ const createFeedbackMiddleware = (req,res,next)=>{
 
 
     const feedback = new Feedback({
-        qNum: qnum,
+        // qNum: qnum,
         author:email,
         evaluation:evaluation,
         plusFeedback: feedbacktype?content:"",
@@ -21,7 +21,7 @@ const createFeedbackMiddleware = (req,res,next)=>{
 
     feedback.save()
         .then(() => {
-            Question.findOne({ qNum: qnum }, (err, data) => {
+            Question.findOne({ _id: qnum }, (err, data) => {
                 if (err) throw err;
                 else {
                     data.feedback.push(feedback._id)

@@ -5,7 +5,7 @@ const loadFeedbackMiddleware = (req, res, next) => {
 
     const getQuestion = (qnum) => {
         return new Promise((res, rej) => {
-            Question.findOne({ qNum: qnum }, (err, data) => {
+            Question.findOne({ _id: qnum }, (err, data) => {
                 if (err) throw err;
                 else {
                     resolve(data.feedback)

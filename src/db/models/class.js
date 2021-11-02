@@ -1,4 +1,5 @@
 var mongoose = require('mongoose')
+
 // import {questionSchema} from './question'
 
 const AnswerOptionSchema = new mongoose.Schema({
@@ -95,9 +96,6 @@ const classSchema = new mongoose.Schema({
         required:true,
         max:32
     },
-    // classId:{
-    //     type:String
-    // },
     joinCode: { 
         type:String,
         trim:true,
@@ -118,8 +116,9 @@ const classSchema = new mongoose.Schema({
         default:[]
     },
     questions:{
-        type: [questionSchema],
-        default:[]
+        // type: [questionSchema],
+        type: [mongoose.Schema.ObjectId],
+        ref:'Question',
     },
     target:{
         type:[Number],

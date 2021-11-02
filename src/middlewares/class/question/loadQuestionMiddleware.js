@@ -1,5 +1,5 @@
 const Class = require('../../../db/models/class');
-// const Question = require('../../../db/models/question');
+const Question = require('../../../db/models/question');
 const loadQuestionMiddleware = (req, res) => {
     const joinCode = req.query.code
     Class.findOne({ joinCode: joinCode }, (err, data) => {
@@ -10,11 +10,12 @@ const loadQuestionMiddleware = (req, res) => {
             })
         }
         else {
-            console.log("data", data)
-            res.json({
-                //token,
-                questions: { questionDatas: data.questions, success: true, msg: "success" },
+            Question.find({_id:{"$in":data.questions}}).then((data)=>{
+                res.json({
+                    questions:{questionDatas:data, success:true, msg:"success"}
+                })
             })
+            .catch((err) => {throw err} )
         }
     })
 }

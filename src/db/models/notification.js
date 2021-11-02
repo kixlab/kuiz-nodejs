@@ -1,3 +1,6 @@
+/*
+Leaving it as Code Comment for future implementation
+*/
 var mongoose = require('mongoose')
 
 const notificationSchema = new mongoose.Schema({

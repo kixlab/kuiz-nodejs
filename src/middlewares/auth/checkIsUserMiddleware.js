@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 
 const checkIsUserMiddleware = (req, res, next) => {
     const token = req.headers['x-access-token'] || req.query.token;
-    console.log(token);
+    //console.log(token);
     const email = req.query.email;
 
     if (!token) {
@@ -25,13 +25,13 @@ const checkIsUserMiddleware = (req, res, next) => {
     const respond = (token) => {
         User.findById(token._id)
             .then((data) => {
-                console.log("hello" + data);
+                //console.log("hello" + data);
                 if (data === null) return res.status(403).json({
                     success: false,
                     msg: 'no such user'
                 })
                 else {
-                    console.log(data.email)
+                    //console.log(data.email)
                     if (data.email === email) next();
                     else return res.status(403).json({
                         success: false,

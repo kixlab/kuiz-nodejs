@@ -5,16 +5,16 @@ const joinClassMiddleware = (req, res, next) => {
     const userEmail = req.body.userEmail;
     const joinCode = req.body.joinCode;
     const _id = req.body._id;
-    console.log("req",req)
+    //console.log("req",req.body)
     //const classname = req.body.className;
 
     const check = (data) => {
-        console.log("data",data)
+        // //console.log("data",data)
         if (data === null) {
             return res.json({ msg: "No such class", success: false });
         } else {
             if (joinCode == data.joinCode) {
-                Class.updateOne({ joinCode: joinCode }, { $push: { students: _id } }, (err, data2) => {
+                Class.updateOne({ joinCode: joinCode }, { $push: { students: [_id] } }, (err, data2) => {
                     if (err) throw err;
                     else {
                         //update userSchema
@@ -36,7 +36,7 @@ const joinClassMiddleware = (req, res, next) => {
             }
         }
     }
-    console.log("Class!!",Class.findOne({joinCode:joinCode}))
+
     Class.findOne({ joinCode: joinCode})
         .then(check)
         .catch((err) => { throw err });

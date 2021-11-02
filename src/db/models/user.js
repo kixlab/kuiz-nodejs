@@ -41,10 +41,28 @@ const userSchema = new mongoose.Schema({
         unique:true,
         lowercase:true
     },
+    isStudent:{
+        type:Boolean,
+        default : true
+    },
     classes:{
         type: [String],
         default:[]
-    }
+    },
+    made:{
+        type: [{
+            type:mongoose.Schema.ObjectId,
+            ref:'Question'
+        }],
+        default:[]
+    },
+    made:{
+        type: [{
+            type:mongoose.Schema.ObjectId,
+            ref:'Question'
+        }],
+        default:[]
+    },
 })
 
 module.exports = mongoose.model('User', userSchema);

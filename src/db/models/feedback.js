@@ -1,3 +1,6 @@
+/*
+Leaving it as Code Comment for future implementation
+*/
 var mongoose = require('mongoose');
 
 const evaluationSchema = new mongoose.Schema({
@@ -18,10 +21,10 @@ const evaluationSchema = new mongoose.Schema({
     }
 })
 const feedbackSchema = new mongoose.Schema({
-    qNUm:{
-        type:Number,
-        required:true
-    },
+    // qNUm:{
+    //     type:Number,
+    //     required:true
+    // },
     author: {
         type: String,
         required:true

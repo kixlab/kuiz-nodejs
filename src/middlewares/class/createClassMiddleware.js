@@ -35,7 +35,7 @@ const createClassMiddleware = (req,res) =>{
                 .then(() => {
                     User.updateOne({ userId: instructor }, { $push: { classes: [{ classId:classid, isStudent:false}] } })
                         .then((data) => {
-                            console.log(data);
+                            //console.log(data);
                             res.json({
                                 msg: "creating class success",
                                 success: true
