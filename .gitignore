@@ -1,5 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template
+#privates
+.env
 # Logs
 /logs
 *.log
