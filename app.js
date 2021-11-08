@@ -50,11 +50,13 @@ app.use(
 // var usersRouter = require('./routes/users');
 var authRouter = require('./src/routes/auth');
 var classRouter = require('./src/routes/class')
+var userRouter = require('./src/routes/user')
 
 
 //app.use('/', indexRouter);
 app.use('/auth',authRouter);//localhost:8080/auth/register
 app.use('/class', classRouter)
+app.use('/user', userRouter)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

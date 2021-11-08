@@ -15,7 +15,7 @@ const loadQuestionMiddleware = (req, res) => {
                     questions:{questionDatas:data, success:true, msg:"success"}
                 })
             })
-            .catch((err) => {throw err} )
+            .catch((err) => {console.log(err)} )
         }
     })
 }
