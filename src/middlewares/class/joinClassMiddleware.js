@@ -13,6 +13,7 @@ const joinClassMiddleware = (req, res, next) => {
         if (data === null) {
             return res.json({ msg: "No such class", success: false });
         } else {
+            console.log("joinCode")
             if (joinCode == data.joinCode) {
                 Class.updateOne({ joinCode: joinCode }, { $push: { students: [_id] } }, (err, data2) => {
                     if (err) throw err;

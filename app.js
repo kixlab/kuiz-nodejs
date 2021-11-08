@@ -7,9 +7,15 @@ var logger = require('morgan');
 const cors = require('cors');
 var swaggerJsdoc = require("swagger-jsdoc");
 var swaggerUi = require("swagger-ui-express");
+const mongoose = require('mongoose')
 
-const db = require('./src/db/db');
-db();
+mongoose.connect('mongodb+srv://greenina:kixlab@cluster0.xnfut.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+    useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
+}).then(() => console.log('MongoDB connected...'))
+.catch(error => console.log(error))
+
+// const db = require('./src/db/db');
+// db();
 var app = express();
 app.use(cors());
 // app.get('/',(req,res) =>{res.header("Access-Control-Allow-Origin","localhost:3000");res.send(data)});
