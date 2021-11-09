@@ -23,6 +23,8 @@ var createFeedback = require("../middlewares/class/feedback/createFeedbackMiddle
 //var deleteFeedback = require("../middlewares/class/feedback/deleteFeedbackMiddleware")
 var loadFeedback = require("../middlewares/class/feedback/loadFeedbackMiddleware")
 
+var getLikes = require("../middlewares/class/question/getLikesMiddleware")
+
 
 
 /////도현씨 요기부터 읽으시면 돼요!////
@@ -32,6 +34,7 @@ router.get('/load', checkIsUser, loadClass)
 
 router.get('/question/load', loadQuestion)// , checkIsUser, checkInClass <- 이거 추가 해야함
 router.post('/question/create', createQuestion); // ,checkIsUser, checkInClass <- 이거 추가 해야함
+router.get('/question/likes', getLikes)
 //router.post('/question/delete',checkIsUser, checkInClass, deleteQuestion);
 //router.post('/question/modify',checkIsUser, checkInClass, modifyQuestion);
 

@@ -29,6 +29,13 @@ const questionSchema = new mongoose.Schema({
         type:mongoose.Schema.ObjectId,
         ref:'User'
     },
+    authorName:{
+        type:String
+    },
+    authorImg:{
+        type:String,
+        default:"~/assets/images/profile-default.png"
+    },
     qStem:{
         type:String, 
         unique:true
@@ -74,12 +81,12 @@ const questionSchema = new mongoose.Schema({
     //     contentType:String
     // },
     comment :{
-        type:[String],
-        default:["some comment"]
+        type:[Object],
+        default:[]
     },
     likes:{
-        type:Number,
-        default:0
+        type:[mongoose.Schema.ObjectId],
+        default:[]
     }
 },{
     timestamps: true,

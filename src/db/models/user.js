@@ -45,6 +45,10 @@ const userSchema = new mongoose.Schema({
         type:Boolean,
         default : true
     },
+    imageUrl:{
+        type:String,
+        default :"~/assets/images/profile-default.png"
+    },
     classes:{
         type: [String],
         default:[]
@@ -56,7 +60,7 @@ const userSchema = new mongoose.Schema({
         }],
         default:[]
     },
-    made:{
+    solved:{
         type: [{
             type:mongoose.Schema.ObjectId,
             ref:'Question'
