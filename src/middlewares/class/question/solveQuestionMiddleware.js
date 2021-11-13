@@ -15,6 +15,7 @@ const solveQuesetionMiddleware = (req,res) => {
             } 
             else{
                 if(data2.solved.filter(e=>e.user == uid ).length>0){  
+                    console.log("Non first try!")
                     const correct = data2["solved"].filter(e=>e.selected == data2["answer"])
                     const ratio = {"correct":correct.length, "solved":data2["solved"].length}  
                     res.json({
@@ -25,10 +26,11 @@ const solveQuesetionMiddleware = (req,res) => {
                 }
                 else {
                     Question.findOneAndUpdate({_id : ObjectId(qid)},{$push:{solved: solvedSchema}},{ returnOriginal: false },(err,data1)=>{
+                        console.log("first try!")
                         if(err){
                             console.log("err in updating solved to question",err)
                         } else{
-                            const correct = data1["solved"].filter(e=>e.selected == e.answer)
+                            const correct = data1["solved"].filter(e=>e.selected == data1.answer)
                             const ratio = {"correct":correct.length, "solved":data1["solved"].length}
                             User.updateOne({ _id: ObjectId(uid) }, { $push: { solved: ObjectId(qid) } })
                             res.json({
