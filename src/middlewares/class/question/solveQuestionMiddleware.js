@@ -14,10 +14,13 @@ const solveQuesetionMiddleware = (req,res) => {
                 console.log("err",err)
             } 
             else{
-                if(data2.solved.filter(e=>e.user == uid ).length>0){    
+                if(data2.solved.filter(e=>e.user == uid ).length>0){  
+                    const correct = data2["solved"].filter(e=>e.selected == data2["answer"])
+                    const ratio = {"correct":correct.length, "solved":data2["solved"].length}  
                     res.json({
                         msg:"already solved",
-                        solved:data2["solved"]
+                        solved:data2["solved"],
+                        ratio:ratio
                     })
                 }
                 else {
@@ -25,10 +28,13 @@ const solveQuesetionMiddleware = (req,res) => {
                         if(err){
                             console.log("err in updating solved to question",err)
                         } else{
+                            const correct = data1["solved"].filter(e=>e.selected == e.answer)
+                            const ratio = {"correct":correct.length, "solved":data1["solved"].length}
                             User.updateOne({ _id: ObjectId(uid) }, { $push: { solved: ObjectId(qid) } })
                             res.json({
                                 msg:"success in solving",
-                                solved:data1["solved"]
+                                solved:data1["solved"],
+                                ratio:ratio
                             })
                         }
                     })
