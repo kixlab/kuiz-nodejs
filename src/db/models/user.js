@@ -28,6 +28,19 @@ const userProfileSchema = new mongoose.Schema({
         default:true
     }
 })
+
+const solvedSchema = new mongoose.Schema({
+    user:{
+        type:mongoose.Schema.ObjectId,
+        ref:'Question'
+    },
+    selected:{
+        type:Number
+    },
+    answer:{
+        type:Number
+    }
+},{_id:false})
 const userSchema = new mongoose.Schema({
     name:{
         type:String,
@@ -61,10 +74,8 @@ const userSchema = new mongoose.Schema({
         default:[]
     },
     solved:{
-        type: [{
-            type:mongoose.Schema.ObjectId,
-            ref:'Question'
-        }],
+        type: [mongoose.Schema.ObjectId],
+        ref:'Question',
         default:[]
     },
 })

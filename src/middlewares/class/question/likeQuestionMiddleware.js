@@ -10,7 +10,6 @@ const likeQuestionMiddleware = (req,res)=>{
 
     const likeQuestion = (qid, uid)=>{
         Question.findOne({_id:ObjectId(qid)},(err,data)=>{
-            console.log("entered findOne")
             if(err){
                 console.log("err in findQuestion")
                 throw err;

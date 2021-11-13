@@ -21,6 +21,17 @@ var mongoose = require('mongoose');
 //     // }
 // }, { _id: false })
 
+const solvedSchema = new mongoose.Schema({
+    user : {
+        type:mongoose.Schema.ObjectId,
+        ref:'User'
+    },
+    selected:{
+        type:Number,
+        default:null
+    }
+}, { _id: false })
+
 const questionSchema = new mongoose.Schema({
     // qNum:{
     //     type:Number,
@@ -86,6 +97,10 @@ const questionSchema = new mongoose.Schema({
     },
     likes:{
         type:[mongoose.Schema.ObjectId],
+        default:[]
+    },
+    solved:{
+        type:[solvedSchema],
         default:[]
     }
 },{
