@@ -15,7 +15,6 @@ const solveQuesetionMiddleware = (req,res) => {
             } 
             else{
                 if(data2.solved.filter(e=>e.user == uid ).length>0){  
-                    console.log("Non first try!")
                     const correct = data2["solved"].filter(e=>e.selected == data2["answer"])
                     const ratio = {"correct":correct.length, "solved":data2["solved"].length}  
                     res.json({

@@ -25,12 +25,14 @@ var loadFeedback = require("../middlewares/class/feedback/loadFeedbackMiddleware
 
 var getLikes = require("../middlewares/class/question/getLikesMiddleware")
 var solveQuestion = require('../middlewares/class/question/solveQuestionMiddleware')
+var getTag = require('../middlewares/class/getTagMiddleware')
 
 
 
 router.post('/create', checkIsUser, createClass)
 router.post('/join', joinClass)
 router.get('/load', checkIsUser, loadClass)
+router.post('/tag', getTag)
 
 router.get('/question/load', loadQuestion)// , checkIsUser, checkInClass <- 이거 추가 해야함
 router.post('/question/create', createQuestion); // ,checkIsUser, checkInClass <- 이거 추가 해야함
@@ -42,5 +44,6 @@ router.post('/question/solve',solveQuestion)
 router.get('/feedback/load',checkIsUser, loadFeedback)
 router.post('/feedback/create', checkIsUser, checkInClass, createFeedback);
 //router.post('/feedback/delete', checkIsUser, checkInClass, deleteFeedback)
+
 
 module.exports = router;
