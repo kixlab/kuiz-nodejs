@@ -30,6 +30,7 @@ var getTag = require('../middlewares/class/getTagMiddleware')
 var getTarget = require('../middlewares/class/getTargetMiddleware')
 
 
+
 router.post('/create', checkIsUser, createClass)
 router.post('/join', joinClass)
 router.get('/load', checkIsUser, loadClass)
