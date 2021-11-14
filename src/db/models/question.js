@@ -32,6 +32,23 @@ const solvedSchema = new mongoose.Schema({
     }
 }, { _id: false })
 
+const commentSchema = new mongoose.Schema({
+    uid : {
+        type:mongoose.Schema.ObjectId,
+        ref:'User'
+    },
+    comment:{
+        type:String
+    },
+    name:{
+        type:String
+    },
+    imgUrl:{
+        type:String,
+        default:"~assets/images/profile-default.png"
+    }
+},{timestamps:true})
+
 const questionSchema = new mongoose.Schema({
     // qNum:{
     //     type:Number,
@@ -92,7 +109,7 @@ const questionSchema = new mongoose.Schema({
     //     contentType:String
     // },
     comment :{
-        type:[Object],
+        type:[commentSchema],
         default:[]
     },
     likes:{
