@@ -8,7 +8,6 @@ const getTag = (req,res)=>{
             console.log("err in finding class",err)
         }
         else{
-            console.log("class data",data)
             res.json({
                 tags:data.tag
             })
