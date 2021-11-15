@@ -17,7 +17,7 @@ const commentSchema = new mongoose.Schema({
     },
     imgUrl:{
         type:String,
-        default:"~assets/images/profile-default."
+        default:""
     }
 },{timestamps:true})
 

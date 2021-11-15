@@ -60,7 +60,7 @@ const userSchema = new mongoose.Schema({
     },
     imageUrl:{
         type:String,
-        default :"~/assets/images/profile-default.png"
+        default :""
     },
     classes:{
         type: [String],
