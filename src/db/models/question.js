@@ -45,7 +45,7 @@ const commentSchema = new mongoose.Schema({
     },
     imgUrl:{
         type:String,
-        default:"~assets/images/profile-default."
+        default:"~assets/images/profile-default.png"
     }
 },{timestamps:true})
 
@@ -58,11 +58,12 @@ const questionSchema = new mongoose.Schema({
         ref:'User'
     },
     authorName:{
-        type:String
+        type:String,
+        required:true
     },
     authorImg:{
         type:String,
-        default:"~/assets/images/profile-default.png"
+        required:true
     },
     qStem:{
         type:String, 

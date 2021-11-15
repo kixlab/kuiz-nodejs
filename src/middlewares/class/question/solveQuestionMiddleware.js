@@ -31,12 +31,14 @@ const solveQuesetionMiddleware = (req,res) => {
                         } else{
                             const correct = data1["solved"].filter(e=>e.selected == data1.answer)
                             const ratio = {"correct":correct.length, "solved":data1["solved"].length}
-                            User.updateOne({ _id: ObjectId(uid) }, { $push: { solved: ObjectId(qid) } })
-                            res.json({
+                            User.findOneAndUpdate({ _id: ObjectId(uid) }, { $push: { solved: ObjectId(qid) } },(err,data2)=>{
+                                res.json({
                                 msg:"success in solving",
                                 solved:data1["solved"],
                                 ratio:ratio
                             })
+                            })
+                            
                         }
                     })
                 }
