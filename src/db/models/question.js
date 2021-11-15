@@ -62,7 +62,7 @@ const questionSchema = new mongoose.Schema({
     },
     authorImg:{
         type:String,
-        default:"~/assets/images/profile-default.png"
+        default:""
     },
     qStem:{
         type:String, 
