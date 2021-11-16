@@ -28,6 +28,7 @@ var getLikes = require("../middlewares/class/question/getLikesMiddleware")
 var solveQuestion = require('../middlewares/class/question/solveQuestionMiddleware')
 var getTag = require('../middlewares/class/getTagMiddleware')
 var getTarget = require('../middlewares/class/getTargetMiddleware')
+var getParticipants = require('../middlewares/class/getParticipantsMiddleware')
 
 
 
@@ -46,6 +47,7 @@ router.post('/question/comment', makeComment)
 //router.post('/question/modify',checkIsUser, checkInClass, modifyQuestion);
 
 router.get('/feedback/load',checkIsUser, loadFeedback)
+router.get('/participants/status', getParticipants)
 router.post('/feedback/create', checkIsUser, checkInClass, createFeedback);
 //router.post('/feedback/delete', checkIsUser, checkInClass, deleteFeedback)
 
