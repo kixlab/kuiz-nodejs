@@ -124,6 +124,10 @@ const classSchema = new mongoose.Schema({
         type:[Number],
         default:[3,3,3],
         // validate:[arrayLimit,"{PATH} exceeds the limit of 3"]
+    },
+    tag:{
+        type:[String],
+        default:[]
     }
 })
 

@@ -10,7 +10,7 @@ const loadClassMiddleware = (req,res,next) => {
             User.findOne({email:email},(err,data)=>{
                 if(err) throw err;
                 else{
-                    resolve(data.classes)
+                    return (data.classes)
                 }
             })
         })
@@ -20,7 +20,7 @@ const loadClassMiddleware = (req,res,next) => {
             Class.find({ classId : {$in:classes}},(err,data)=>{
                 if(err) throw err;
                 else{
-                    resolve(data)
+                    return (data)
                 }
             })
         })

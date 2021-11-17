@@ -28,6 +28,19 @@ const userProfileSchema = new mongoose.Schema({
         default:true
     }
 })
+
+const solvedSchema = new mongoose.Schema({
+    user:{
+        type:mongoose.Schema.ObjectId,
+        ref:'Question'
+    },
+    selected:{
+        type:Number
+    },
+    answer:{
+        type:Number
+    }
+},{_id:false})
 const userSchema = new mongoose.Schema({
     name:{
         type:String,
@@ -45,6 +58,10 @@ const userSchema = new mongoose.Schema({
         type:Boolean,
         default : true
     },
+    imageUrl:{
+        type:String,
+        default :""
+    },
     classes:{
         type: [String],
         default:[]
@@ -56,13 +73,14 @@ const userSchema = new mongoose.Schema({
         }],
         default:[]
     },
-    made:{
-        type: [{
-            type:mongoose.Schema.ObjectId,
-            ref:'Question'
-        }],
+    solved:{
+        type: [mongoose.Schema.ObjectId],
+        ref:'Question',
         default:[]
     },
+    comment:{
+        type:[String]
+    }
 })
 
 module.exports = mongoose.model('User', userSchema);

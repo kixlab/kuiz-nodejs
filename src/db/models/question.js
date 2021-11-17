@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 
 // const AnswerOptionSchema = new mongoose.Schema({
 //     optionNumber:{
@@ -21,19 +21,62 @@ var mongoose = require('mongoose');
 //     // }
 // }, { _id: false })
 
-const questionSchema = new mongoose.Schema({
+const solvedSchema = new mongoose.Schema(
+  {
+    user: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+    },
+    selected: {
+      type: Number,
+      default: null,
+    },
+  },
+  { _id: false },
+);
+
+const commentSchema = new mongoose.Schema(
+  {
+    uid: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+    },
+    comment: {
+      type: String,
+    },
+    name: {
+      type: String,
+    },
+    imgUrl: {
+      type: String,
+      default: "",
+    },
+  },
+  { timestamps: true },
+);
+
+const questionSchema = new mongoose.Schema(
+  {
     // qNum:{
     //     type:Number,
     // },
-    author:{
-        type:mongoose.Schema.ObjectId,
-        ref:'User'
+    author: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
     },
-    qStem:{
-        type:String, 
-        unique:true
-        // minlength:10,
-        // maxlength:1000
+    authorName:{
+        type:String,
+        required:true
+    },
+    authorImg:{
+        type:String,
+        required:true
+    },
+    qStem: {
+      type: String,
+      unique: true,
+      // minlength:10,
+      // maxlength:1000
     },
     /*
     *****left as code comment for further implementation(ask @inhwa)*****
@@ -46,43 +89,49 @@ const questionSchema = new mongoose.Schema({
         required:true
     },
     */
-    tags:{
-        type:[String],
-        default:[]
+    tags: {
+      type: [String],
+      default: [],
     },
-    answerOptions:{
-        type:[],
-        default:undefined,
-        // validate:{
-        //     validator: function(value,any){
-        //         return value&&value.length ===4
-        //     },
-        //     message:'Answer options should be 4'
-        // }
+    answerOptions: {
+      type: [],
+      default: undefined,
+      // validate:{
+      //     validator: function(value,any){
+      //         return value&&value.length ===4
+      //     },
+      //     message:'Answer options should be 4'
+      // }
     },
-    answer:{
-        type: Number,
-        required:true
+    answer: {
+      type: Number,
+      required: true,
     },
-    explanation:{
-        type:String,
-        required:true,
-        default:""
+    explanation: {
+      type: String,
+      required: true,
+      default: "",
     },
     // image:{
     //     data:Buffer,
     //     contentType:String
     // },
-    comment :{
-        type:[String],
-        default:["some comment"]
+    comment: {
+      type: [commentSchema],
+      default: [],
     },
-    likes:{
-        type:Number,
-        default:0
-    }
-},{
+    likes: {
+      type: [mongoose.Schema.ObjectId],
+      default: [],
+    },
+    solved: {
+      type: [solvedSchema],
+      default: [],
+    },
+  },
+  {
     timestamps: true,
-})
+  },
+);
 
-module.exports = mongoose.model('Question', questionSchema);
+module.exports = mongoose.model("Question", questionSchema);
