@@ -19,14 +19,15 @@ var credentials = {
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '4000');
+var port = normalizePort(process.env.PORT || '8081');
 app.set('port', port);
 
 /**
- * Create HTTPS server.
+ * Create HTTP or HTTPS server.
  */
 
-var server = https.createServer(credentials, app);
+var server = https.createServer(app);
+// var server = https.createServer(credentials, app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -34,7 +35,7 @@ var server = https.createServer(credentials, app);
 
 server.listen(port);
 server.on('error', onError);
-server.on(`Listening on port ${port}`, onListening);
+server.on('Listening...', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
