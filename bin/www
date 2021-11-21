@@ -19,13 +19,8 @@ var credentials = {
  * Get port from environment and store in Express.
  */
 
-<<<<<<< HEAD
-var port = normalizePort(process.env.PORT || "4000");
-app.set("port", port);
-=======
 var port = normalizePort(process.env.PORT || '8081');
 app.set('port', port);
->>>>>>> 997461a6510e3afeb4b01fb519851587fb59f6ce
 
 /**
  * Create HTTP or HTTPS server.
