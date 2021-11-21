@@ -10,14 +10,15 @@ var swaggerUi = require("swagger-ui-express");
 const mongoose = require("mongoose");
 
 // "mongodb+srv://greenina:kixlab@cluster0.xnfut.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const endpoint = "mongodb://localhost:27017/kuizdb";
 mongoose
-  .connect("mongodb://localhost:27017/kuizdb", {
+  .connect(endpoint, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false,
   })
-  .then(() => console.log("MongoDB connected..."))
+  .then(() => console.log("MongoDB connected to " + endpoint))
   .catch((error) => console.log(error));
 
 // const db = require('./src/db/db');
@@ -44,7 +45,7 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:4000",
+        url: "https://localhost:4000",
       },
     ],
   },
