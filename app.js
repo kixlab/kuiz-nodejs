@@ -11,7 +11,7 @@ const mongoose = require("mongoose");
 
 // "mongodb+srv://greenina:kixlab@cluster0.xnfut.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 mongoose
-  .connect("mongodb://mongodb-container:27017", {
+  .connect("mongodb://localhost:27017/kuizdb", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
