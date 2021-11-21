@@ -18,7 +18,8 @@ var credentials = {
 var port = normalizePort(process.env.PORT || "8081");
 app.set("port", port);
 
-var server = https.createServer(credentials, app);
+var server = http.createServer(app);
+// var server = https.createServer(credentials, app);
 
 server.listen(port);
 server.on("error", onError);

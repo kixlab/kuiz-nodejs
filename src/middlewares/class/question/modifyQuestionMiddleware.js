@@ -30,7 +30,7 @@ const modifyQuestionMiddleware = (req, res) => {
       // //console.log(data);
       axios
         .post(
-          "https://localhost:443/question/modifyQuestion",
+          "http://localhost:4000/question/modifyQuestion",
           // { content: noticeContent, title: noticeTitle }, { params: { userId: userid, classId: classid }}
         )
         .then((response) => {

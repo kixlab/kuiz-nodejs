@@ -45,7 +45,7 @@ const options = {
     },
     servers: [
       {
-        url: "https://localhost:443",
+        url: "http://localhost:4000",
       },
     ],
   },
@@ -65,7 +65,7 @@ var classRouter = require("./src/routes/class");
 var userRouter = require("./src/routes/user");
 
 //app.use('/', indexRouter);
-app.use("/auth", authRouter); //localhost:443/auth/register
+app.use("/auth", authRouter); //localhost:4000/auth/register
 app.use("/class", classRouter);
 app.use("/user", userRouter);
 // catch 404 and forward to error handler
@@ -84,7 +84,7 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-const PORT = 443;
+const PORT = 4000;
 
 app.listen(PORT, () => {
   console.log(`Server Running at PORT ${PORT}`);
