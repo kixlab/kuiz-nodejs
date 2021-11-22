@@ -10,10 +10,12 @@ var http = require("http");
 var https = require("https");
 var fs = require("fs");
 
+/*
 var credentials = {
   key: fs.readFileSync("key.pem"),
   cert: fs.readFileSync("cert.pem"),
 };
+*/
 
 var port = normalizePort(process.env.PORT || "8081");
 app.set("port", port);

@@ -29,12 +29,14 @@ app.use(cors());
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
-
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+const PORT = process.env.NODE_ENV === "development" ? 4000 : 5000;
+
 const options = {
   definition: {
     openapi: "3.0.0",
@@ -45,7 +47,7 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:4000",
+        url: `http://localhost:${PORT}`,
       },
     ],
   },
@@ -83,8 +85,6 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
-
-const PORT = 4000;
 
 app.listen(PORT, () => {
   console.log(`Server Running at PORT ${PORT}`);
