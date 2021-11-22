@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start:staging": "cross-env NODE_ENV=development pm2 start ./bin/www --name 'node-staging'",
-    "start:production": "cross-env NODE_ENV=production pm2 start ./bin/www --name 'node-production'"
+    "start:staging": "cross-env NODE_ENV=development PORT=4000 pm2 start ./bin/www --name 'node-staging'",
+    "start:production": "cross-env NODE_ENV=production PORT=5000 pm2 start ./bin/www --name 'node-production'"
   },
   "dependencies": {
     "axios": "^0.21.1",
