@@ -87,6 +87,7 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
+app.set("port", PORT);
 app.listen(PORT, () => {
   console.log(`Server Running at PORT ${PORT}`);
 });
