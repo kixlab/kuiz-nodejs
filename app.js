@@ -10,7 +10,7 @@ var swaggerUi = require("swagger-ui-express");
 const mongoose = require("mongoose");
 
 // "mongodb+srv://greenina:kixlab@cluster0.xnfut.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-const endpoint = "mongodb://localhost:27017/kuizdb";
+const endpoint = "mongodb://localhost:27010/kuizdb";
 mongoose
   .connect(endpoint, {
     useNewUrlParser: true,
