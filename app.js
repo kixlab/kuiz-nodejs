@@ -35,7 +35,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-const PORT = process.env.NODE_ENV === "development" ? 4000 : 5000;
+const PORT = process.env.NODE_ENV === "production" ? 5000 : 4000;
 
 const options = {
   definition: {
