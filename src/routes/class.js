@@ -20,23 +20,36 @@ var createQuestion = require("../middlewares/class/question/createQuestionMiddle
 var loadQuestion = require("../middlewares/class/question/loadQuestionMiddleware")
 //feedback related middleware
 var createFeedback = require("../middlewares/class/feedback/createFeedbackMiddleware")
+var makeComment = require('../middlewares/class/question/makeCommentMiddleware')
 //var deleteFeedback = require("../middlewares/class/feedback/deleteFeedbackMiddleware")
 var loadFeedback = require("../middlewares/class/feedback/loadFeedbackMiddleware")
 
+var getLikes = require("../middlewares/class/question/getLikesMiddleware")
+var solveQuestion = require('../middlewares/class/question/solveQuestionMiddleware')
+var getTag = require('../middlewares/class/getTagMiddleware')
+var getTarget = require('../middlewares/class/getTargetMiddleware')
+var getParticipants = require('../middlewares/class/getParticipantsMiddleware')
 
 
-/////도현씨 요기부터 읽으시면 돼요!////
+
 router.post('/create', checkIsUser, createClass)
 router.post('/join', joinClass)
 router.get('/load', checkIsUser, loadClass)
+router.post('/tag', getTag)
+router.get('/target', getTarget)
 
 router.get('/question/load', loadQuestion)// , checkIsUser, checkInClass <- 이거 추가 해야함
 router.post('/question/create', createQuestion); // ,checkIsUser, checkInClass <- 이거 추가 해야함
+router.get('/question/likes', getLikes)
+router.post('/question/solve',solveQuestion)
+router.post('/question/comment', makeComment)
 //router.post('/question/delete',checkIsUser, checkInClass, deleteQuestion);
 //router.post('/question/modify',checkIsUser, checkInClass, modifyQuestion);
 
 router.get('/feedback/load',checkIsUser, loadFeedback)
+router.get('/participants/status', getParticipants)
 router.post('/feedback/create', checkIsUser, checkInClass, createFeedback);
 //router.post('/feedback/delete', checkIsUser, checkInClass, deleteFeedback)
+
 
 module.exports = router;

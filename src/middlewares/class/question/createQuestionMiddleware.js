@@ -11,7 +11,6 @@ const createQuestionMiddleware = (req, res) => {
     var quizData = req.body.quizData;
     const classId = req.body.classId;
     const question = new Question(quizData)
-    console.log("question",question)
 
     const saveToClass = (data) =>{
         console.log("classData",data)
@@ -27,7 +26,8 @@ const createQuestionMiddleware = (req, res) => {
                             .then((data3) => {
                                 res.json({
                                     msg: "created question",
-                                    success: true
+                                    success: true,
+                                    data:question._id
                                 })
                             })
                             .catch((err) => { throw err; })

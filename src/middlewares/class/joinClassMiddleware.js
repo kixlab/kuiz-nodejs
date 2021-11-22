@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 const Class = require('../../db/models/class');
 const User = require('../../db/models/user')
 
@@ -15,7 +16,7 @@ const joinClassMiddleware = (req, res, next) => {
         } else {
             console.log("joinCode")
             if (joinCode == data.joinCode) {
-                Class.updateOne({ joinCode: joinCode }, { $push: { students: [_id] } }, (err, data2) => {
+                Class.updateOne({ joinCode: joinCode }, { $push: { students: ObjectId(_id) } }, (err, data2) => {
                     if (err) throw err;
                     else {
                         //update userSchema

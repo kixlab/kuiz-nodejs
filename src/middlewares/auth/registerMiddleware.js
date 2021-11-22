@@ -8,6 +8,7 @@ const registerMiddleware = (req, res) => {
     // //console.log("Req",req)
     const name = req.body.name
     const email = req.body.email
+    const imageUrl = req.body.image
     User.findOne({ email }).exec((err, user) => {
         if (err) {
             //console.log("err")
@@ -18,14 +19,14 @@ const registerMiddleware = (req, res) => {
             if (user) {
                 // //console.log("this user exists")
                 // const token = jwt.sign({ _id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '7d' })
-                const { _id, name, email, classes } = user;
+                const { _id, name, email, classes, imageUrl } = user;
                 // //console.log("user",user)
                 res.json({
                     //token,
-                    user: { _id, name, email, classes },
+                    user: { _id, name, email, classes, imageUrl },
                 })
             } else {
-                let newUser = new User({ name, email });
+                let newUser = new User({ name, email, imageUrl });
                 // //console.log("newUser", newUser)
                 newUser.save((err, data) => {
                     if (err) {
@@ -35,10 +36,10 @@ const registerMiddleware = (req, res) => {
                         })
                     }
                     const token = jwt.sign({ _id: data._id, email: data.email }, process.env.JWT_SECRET, { expiresIn: '7d' })
-                    const { _id, name, email, classes } = newUser;
+                    const { _id, name, email, classes, imageUrl } = newUser;
                     res.json({
                         token,
-                        user: { _id, name, email, classes },
+                        user: { _id, name, email, classes, imageUrl },
                     })
                 })
             }

@@ -1,6 +1,6 @@
 const User = require('../../../db/models/user');
 const Question = require('../../../db/models/question');
-const loadSolvedMiddleware = (req, res) => {
+const loadCommentMiddleware = (req, res) => {
     const email = req.query.email
     User.findOne({ email: email }, (err, data) => {
         if (err) {
@@ -10,16 +10,12 @@ const loadSolvedMiddleware = (req, res) => {
             })
         }
         else {
-            console.log("DATA",data)
-            Question.find({_id:{"$in":data.solved}}).then((data)=>{
-                res.json({
-                    solved:{solved:data, success:true, msg:"success"}
-                })
+            res.json({
+                comment:data.comment
             })
-            .catch((err) => {console.log(err)} )
         }
     })
 }
 
 
-module.exports = loadSolvedMiddleware
+module.exports = loadCommentMiddleware
