@@ -13,7 +13,7 @@ const SERVER_ENDPOINT =
   process.env.BUILD_ENV === "local" ? "13.124.178.61" : "localhost";
 const SERVER_PORT = process.env.BUILD_ENV === "production" ? 5000 : 4000;
 const DB_PORT = process.env.BUILD_ENV === "production" ? 27017 : 27010;
-const DB_ENDPOINT = `mongodb://${SERVER_ENDPOINT}:${DB_PORT}`;
+const DB_ENDPOINT = `mongodb://${SERVER_ENDPOINT}:${DB_PORT}/kuizdb`;
 
 mongoose
   .connect(DB_ENDPOINT, {
