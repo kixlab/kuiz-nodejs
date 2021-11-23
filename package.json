@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start:staging": "cross-env NODE_ENV=development pm2 start ./bin/www --name 'node-staging'",
-    "start:production": "cross-env NODE_ENV=production pm2 start ./bin/www --name 'node-production'"
+    "dev": "cross-env BUILD_ENV=local NODE_ENV=development node ./bin/www --name 'node-local'",
+    "start:staging": "cross-env BUILD_ENV=staging NODE_ENV=production pm2 start ./bin/www --name 'node-staging'",
+    "start:production": "cross-env BUILD_ENV=production NODE_ENV=production pm2 start ./bin/www --name 'node-production'"
   },
   "dependencies": {
     "axios": "^0.21.1",
