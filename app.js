@@ -9,17 +9,20 @@ var swaggerJsdoc = require("swagger-jsdoc");
 var swaggerUi = require("swagger-ui-express");
 const mongoose = require("mongoose");
 
-// "mongodb+srv://greenina:kixlab@cluster0.xnfut.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-const DB_PORT = process.env.NODE_ENV === "production" ? 27017 : 27010;
-const endpoint = `mongodb://localhost:${DB_PORT}/kuizdb`;
+const SERVER_ENDPOINT =
+  process.env.BUILD_ENV === "local" ? "13.124.178.61" : "localhost";
+const SERVER_PORT = process.env.BUILD_ENV === "production" ? 5000 : 4000;
+const DB_PORT = process.env.BUILD_ENV === "production" ? 50000 : 40000;
+const DB_ENDPOINT = `mongodb://${SERVER_ENDPOINT}:${DB_PORT}/kuizdb`;
+
 mongoose
-  .connect(endpoint, {
+  .connect(DB_ENDPOINT, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false,
   })
-  .then(() => console.log("MongoDB connected to " + endpoint))
+  .then(() => console.log("MongoDB connected to " + DB_ENDPOINT))
   .catch((error) => console.log(error));
 
 // const db = require('./src/db/db');
@@ -36,8 +39,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-const PORT = process.env.NODE_ENV === "production" ? 5000 : 4000;
-
 const options = {
   definition: {
     openapi: "3.0.0",
@@ -48,7 +49,7 @@ const options = {
     },
     servers: [
       {
-        url: `http://localhost:${PORT}`,
+        url: `http://${SERVER_ENDPOINT}:${SERVER_PORT}`,
       },
     ],
   },
@@ -80,16 +81,12 @@ app.use(function (req, res, next) {
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
 
   // render the error page
   res.status(err.status || 500);
   res.render("error");
 });
 
-app.set("port", PORT);
-app.listen(PORT, () => {
-  console.log(`Server Running at PORT ${PORT}`);
-});
+app.set("port", SERVER_PORT);
 
 module.exports = app;
