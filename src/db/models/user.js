@@ -52,7 +52,7 @@ const userSchema = new mongoose.Schema({
   },
   sid: {
     type: String,
-    default: "Not Set",
+    default: "12345678",
     required: true,
   },
   email: {
