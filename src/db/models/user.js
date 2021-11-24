@@ -34,6 +34,7 @@ const solvedSchema = new mongoose.Schema({
         type:mongoose.Schema.ObjectId,
         ref:'Question'
     },
+
     selected:{
         type:Number
     },
@@ -46,6 +47,11 @@ const userSchema = new mongoose.Schema({
         type:String,
         trim:true,
         max:32
+    },
+    sid:{
+        type:String,
+        default : "Not Set",
+        required:true
     },
     email:{
         type:String,

@@ -19,11 +19,11 @@ const registerMiddleware = (req, res) => {
             if (user) {
                 // //console.log("this user exists")
                 // const token = jwt.sign({ _id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '7d' })
-                const { _id, name, email, classes, imageUrl } = user;
+                const { _id, name, email, classes, imageUrl, sid } = user;
                 // //console.log("user",user)
                 res.json({
                     //token,
-                    user: { _id, name, email, classes, imageUrl },
+                    user: { _id, name, email, classes, imageUrl, sid },
                 })
             } else {
                 let newUser = new User({ name, email, imageUrl });
@@ -36,10 +36,10 @@ const registerMiddleware = (req, res) => {
                         })
                     }
                     const token = jwt.sign({ _id: data._id, email: data.email }, process.env.JWT_SECRET, { expiresIn: '7d' })
-                    const { _id, name, email, classes, imageUrl } = newUser;
+                    const { _id, name, email, classes, imageUrl, sid } = newUser;
                     res.json({
                         token,
-                        user: { _id, name, email, classes, imageUrl },
+                        user: { _id, name, email, classes, imageUrl, sid },
                     })
                 })
             }

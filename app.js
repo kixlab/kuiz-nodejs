@@ -24,6 +24,10 @@ mongoose
   })
   .then(() => console.log("MongoDB connected to " + DB_ENDPOINT))
   .catch((error) => console.log(error));
+// mongoose.connect('mongodb+srv://greenina:kixlab@cluster0.xnfut.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+//     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
+// }).then(() => console.log('MongoDB connected...'))
+// .catch(error => console.log(error))
 
 // const db = require('./src/db/db');
 // db();
