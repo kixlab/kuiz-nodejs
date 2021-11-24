@@ -48,7 +48,6 @@ mongoose
   })
   .then(() => console.log("MongoDB connected to " + DB_ENDPOINT))
   .catch((error) => console.log(error));
-``;
 
 //Load Router
 const authRouter = require("./src/routes/auth");

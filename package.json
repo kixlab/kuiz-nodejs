@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "start": "node ./bin/www",
     "dev": "cross-env BUILD_ENV=local NODE_ENV=development node ./bin/www",
     "start:staging": "cross-env BUILD_ENV=staging NODE_ENV=production pm2 start ./bin/www --name 'node-staging'",
     "start:production": "cross-env BUILD_ENV=production NODE_ENV=production pm2 start ./bin/www --name 'node-production'"

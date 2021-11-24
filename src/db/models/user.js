@@ -34,6 +34,7 @@ const solvedSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "Question",
     },
+
     selected: {
       type: Number,
     },
