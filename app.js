@@ -37,6 +37,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(logger("dev"));
 app.use(cors());
+app.options("*", cors()); // Attach 'Access-Control-Allow-Origin' to preflight
 
 // Connect to Database
 mongoose
@@ -48,7 +49,6 @@ mongoose
   })
   .then(() => console.log("MongoDB connected to " + DB_ENDPOINT))
   .catch((error) => console.log(error));
-``;
 
 //Load Router
 const authRouter = require("./src/routes/auth");
